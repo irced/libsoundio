@@ -208,7 +208,7 @@ packages necessary on your system. Then somewhere on your file system:
 ```
 git clone https://github.com/mxe/mxe
 cd mxe
-make MXE_TARGETS='x86_64-w64-mingw32.static i686-w64-mingw32.static' gcc
+make MXE_TARGETS='x86_64-w64-mingw32.static i686-w64-mingw32.static' gcc cmake
 ```
 
 Then in the libsoundio source directory (replace "/path/to/mxe" with the
@@ -217,16 +217,19 @@ appropriate path):
 ```
 mkdir build-win32
 cd build-win32
-cmake .. -DCMAKE_TOOLCHAIN_FILE=/path/to/mxe/usr/i686-w64-mingw32.static/share/cmake/mxe-conf.cmake
+i686-w64-mingw32.static-cmake ..
 make
 ```
 
 ```
 mkdir build-win64
 cd build-win64
-cmake .. -DCMAKE_TOOLCHAIN_FILE=/path/to/mxe/usr/x86_64-w64-mingw32.static/share/cmake/mxe-conf.cmake
+x86_64-w64-mingw32.static-cmake ..
 make
 ```
+
+To utilize libsoundio in MSVC projects, a library file may be created from the DLL in a manner similar to that described at: https://wiki.videolan.org/GenerateLibFromDll
+
 
 ### Testing
 
